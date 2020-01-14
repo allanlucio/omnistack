@@ -11,6 +11,7 @@ services:
         ports:
             - "3000:3000"
             - "35729:35729"
+            - "8080:8080"
         volumes:
             - .:/home/node/app
         networks:

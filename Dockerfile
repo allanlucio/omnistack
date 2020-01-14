@@ -13,7 +13,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 
 
 WORKDIR /home/node/app
-RUN npm install
+# RUN npm install
 USER node
 # RUN chown -R www-data:www-data /var/www
 
@@ -22,4 +22,4 @@ EXPOSE 8080
 
 
 
-CMD ["node"]
+CMD ["node", "app.js"]
