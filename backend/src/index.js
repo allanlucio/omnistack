@@ -3,8 +3,9 @@ const mogoose = require('mongoose');
 const routes = require('./routes');
 const cors = require('cors');
 const app = express();
+require('dotenv').config();
 
-mogoose.connect("mongodb+srv://allan:N2k6Bo3g74W7MdHF@cluster0-5uqtd.mongodb.net/week10?retryWrites=true&w=majority", {
+mogoose.connect(process.env.MONGO_KEY, {
     useNewUrlParser:true,
     useUnifiedTopology: true
 });
