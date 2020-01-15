@@ -27,9 +27,6 @@ function App() {
     
     const response = await api.post('/devs', data);
 
-
-    
-
     setDevs([...devs, response.data]);
   }
 
