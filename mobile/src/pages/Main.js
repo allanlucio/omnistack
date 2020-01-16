@@ -7,6 +7,7 @@ import {MaterialIcons} from '@expo/vector-icons';
 import api from "../services/api";
 function Main({navigation}){
     const [devs, setDevs] = useState([]);
+    const [techs, setTechs] = useState(null);
     const [currentRegion, setCurrentRegion] = useState(null);
     useEffect(() => {
         async function loadInitialPosition(){
@@ -40,11 +41,11 @@ function Main({navigation}){
                     params: {
                         latitude,
                         longitude,
-                        techs: 'ReactJs'
+                        techs
                     }
                 });
                 setDevs(response.data.devs);
-                console.log(devs[0]);
+                console.log(devs);
         }catch(error){
             console.error(error);
         }
@@ -97,6 +98,7 @@ function Main({navigation}){
                 placeholderTextColor="#999"
                 autoCaptalize="words"
                 autoCorrect={false}
+                onChangeText={setTechs}
             />
 
             <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>
