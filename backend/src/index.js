@@ -1,9 +1,18 @@
 const express = require('express');
 const mogoose = require('mongoose');
 const routes = require('./routes');
+const http = require('http');
+const {setupWebsocket} = require('./websocket');
+
 const cors = require('cors');
-const app = express();
+
 require('dotenv').config();
+
+const app = express();
+const server = http.Server(app);
+setupWebsocket(server);
+
+
 
 mogoose.connect(process.env.MONGO_KEY, {
     useNewUrlParser:true,
@@ -16,5 +25,5 @@ app.use(routes);
 
 
 
-app.listen(8080);
+server.listen(8080);
 
